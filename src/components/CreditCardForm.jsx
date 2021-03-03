@@ -27,6 +27,14 @@ const CreditCardForm = ({ formState, setFormState, setFocused }) => {
         setFieldState('expiration', e.target.value);
         break;
       }
+      case 'cc-exp-month': {
+        setFieldState('expMonth', e.target.value);
+        break;
+      }
+      case 'cc-exp-year': {
+        setFieldState('expYear', e.target.value);
+        break;
+      }
       default:
         break;
     }

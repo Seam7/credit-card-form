@@ -72,7 +72,7 @@ const CreditCardView = ({ state, focused }) => {
               <AnimatePresence initial={false}>
                     {state.holder.split('').map((character, i) => (
                       <motion.span
-                        className="credit-card-view-info-block-content__name"
+                        className="credit-card-view-info-block-content__animable"
                         key={`${character}-${i}`}
                         initial={{opacity: 0, y:-5, x: 10 }}
                         animate={{ opacity: 1, y: 0, x: 0}}
@@ -92,7 +92,62 @@ const CreditCardView = ({ state, focused }) => {
           </div>
           <div className="credit-card-view-info__block">
             <div className="credit-card-view-info-block__title">Expires</div>
-            <div className="credit-card-view-info-block__content">MM / YY</div>
+            <div className="credit-card-view-info-block__content">
+              <AnimatePresence initial={false} exitBeforeEnter>
+                {state.expMonth.length > 0 ? (
+                    state.expMonth.split('').map((character, i) => (
+                      <motion.span
+                        key={`${character}-${i}`}
+                        className="credit-card-view-info-block-content__animable"
+                        initial={{ opacity: 0, y:-5 }}
+                        animate={{ opacity: 1, y: 0}}
+                        exit={{ opacity: 0, y:5 }}
+                        transition={{ duration: 0.2 }} 
+                      >
+                        {character}
+                      </motion.span>
+                  ))
+                  ) : (
+                    <motion.div
+                      key="expMonthPlaceholder"
+                      initial={{ opacity: 0, y:-5 }}
+                      animate={{ opacity: 1, y: 0}}
+                      exit={{ opacity: 0, y:5 }}
+                      transition={{ duration: 0.2 }} 
+                    >
+                      MM
+                    </motion.div>
+                  )}
+              </AnimatePresence>
+              {/* <span style={{ position: 'absolute', left: '30px' }}>/</span> */}
+              <span>/</span>
+              <AnimatePresence initial={false} exitBeforeEnter>
+                {state.expYear.length > 0 ? (
+                    state.expYear.split('').map((character, i) => (
+                      <motion.span
+                        key={`${character}-${i}`}
+                        className="credit-card-view-info-block-content__animable"
+                        initial={{ opacity: 0, y:-5 }}
+                        animate={{ opacity: 1, y: 0}}
+                        exit={{ opacity: 0, y:5 }}
+                        transition={{ duration: 0.2 }} 
+                      >
+                        {character}
+                      </motion.span>
+                  ))
+                  ) : (
+                    <motion.div
+                      key="expYearPlaceholder"
+                      initial={{ opacity: 0, y:-5 }}
+                      animate={{ opacity: 1, y: 0}}
+                      exit={{ opacity: 0, y:5 }}
+                      transition={{ duration: 0.2 }} 
+                    >
+                      YY
+                    </motion.div>
+                  )}
+              </AnimatePresence>  
+            </div>
           </div>
         </div>
       </div>
