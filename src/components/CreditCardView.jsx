@@ -67,7 +67,28 @@ const CreditCardView = ({ state, focused }) => {
         <div className="credit-card-view__info">
           <div className="credit-card-view-info__block">
             <div className="credit-card-view-info-block__title">Card Holder</div>
-            <div className="credit-card-view-info-block__content">FULL NAME</div>
+            <div className="credit-card-view-info-block__content">
+              {state.holder.length > 0 ? (
+              <AnimatePresence initial={false}>
+                    {state.holder.split('').map((character, i) => (
+                      <motion.span
+                        className="credit-card-view-info-block-content__name"
+                        key={`${character}-${i}`}
+                        initial={{opacity: 0, y:-5, x: 10 }}
+                        animate={{ opacity: 1, y: 0, x: 0}}
+                        exit={{ opacity: 0, y:5, x: 0 }}
+                        transition={{ duration: 0.2 }} 
+                      >
+                        {character}
+                      </motion.span>
+                  ))}
+              </AnimatePresence>  
+              ) : (
+                <div>
+                  FULL NAME
+                </div>
+              )}
+            </div>
           </div>
           <div className="credit-card-view-info__block">
             <div className="credit-card-view-info-block__title">Expires</div>
@@ -78,8 +99,23 @@ const CreditCardView = ({ state, focused }) => {
       <div className="credit-card-view__face credit-card-view__back">
         <div className="card-view-back__magnet-line" />
         <div className="card-view-back__cvv">
-          <label className="card-view-back-cvv__label">cvv</label>
-          <div className="card-view-back-cvv__line">1234</div>
+          <label className="card-view-back-cvv__label">CVV</label>
+          <div className="card-view-back-cvv__line">
+            <AnimatePresence initial={false}>
+              {state.cvv.split('').map((character, i) => (
+                <motion.span
+                  className='card-view-back-cvv__number'
+                  key={`${character}-${i}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  *
+                </motion.span>
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </motion.div>

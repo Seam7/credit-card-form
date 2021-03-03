@@ -114,6 +114,14 @@
   font-weight: bold;
 }
 
+.credit-card-view-info-block-content__name {
+  display: inline-block;
+}
+
+.card-view-back-cvv__number {
+  font-size: 21px;
+}
+
 @media (max-width: 720px) {
   .credit-card-view {
     width: 100%;

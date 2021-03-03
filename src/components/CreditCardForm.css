@@ -7,14 +7,32 @@
     position: absolute;
     top: 175px;
     z-index: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.credit-card-form2 {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 10px 20px 31px -1px rgba(0,0,0,0.75);
+    width: 60%;
+    padding: calc(40px + 250px - 175px) 50px 20px; /* calc comes from 40px of top space, 250px from the card space and 175px the top from the positioning */
+    position: absolute;
+    top: 175px;
+    z-index: 0;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(4, 25%);
     grid-column-gap: 40px;
     grid-row-gap: 20px;
 }
 
-.credit-card-form__number {
+.credit-card-form__row {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* .credit-card-form__number {
     grid-area: 1 / 2 / 2 / 5;
 }
 
@@ -36,7 +54,7 @@
 
 .credit-card-form__submit {
     grid-area: 4 / 2 / 5 / 5;
-}
+} */
 
 .credit-card-form-submit__progress-bar {
     height: 15px;

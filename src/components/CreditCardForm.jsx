@@ -53,35 +53,37 @@ const CreditCardForm = ({ formState, setFormState, setFocused }) => {
           onFocus={setFocused}
         />
       </div>
-      <div className="credit-card-form__exp-month">
-        <CCInput
-          name="cc-exp-month"
-          label="Month"
-          value={formState.expMonth}
-          onChange={handleFieldChange}
-          options={{ maxLength: 2 }}
-          onFocus={setFocused}
-        />
-      </div>
-      <div className="credit-card-form__exp-year">
-        <CCInput
-          name="cc-exp-year"
-          label="Year"
-          value={formState.expYear}
-          onChange={handleFieldChange}
-          options={{ maxLength: 2 }}
-          onFocus={setFocused}
-        />
-      </div>
-      <div className="credit-card-form__cvv">
-        <CCInput
-          name="cc-cvv"
-          label="CVV"
-          value={formState.cvv}
-          onChange={handleFieldChange}
-          options={{ maxLength: 4 }}
-          onFocus={setFocused}
-        />
+      <div className="credit-card-form__row">
+        <div className="credit-card-form__exp-month">
+          <CCInput
+            name="cc-exp-month"
+            label="Month"
+            value={formState.expMonth}
+            onChange={handleFieldChange}
+            options={{ maxLength: 2 }}
+            onFocus={setFocused}
+          />
+        </div>
+        <div className="credit-card-form__exp-year">
+          <CCInput
+            name="cc-exp-year"
+            label="Year"
+            value={formState.expYear}
+            onChange={handleFieldChange}
+            options={{ maxLength: 2 }}
+            onFocus={setFocused}
+          />
+        </div>
+        <div className="credit-card-form__cvv">
+          <CCInput
+            name="cc-cvv"
+            label="CVV"
+            value={formState.cvv}
+            onChange={handleFieldChange}
+            options={{ maxLength: 4 }}
+            onFocus={setFocused}
+          />
+        </div>
       </div>
       <div className="credit-card-form__submit">
         <div className="credit-card-form-submit__progress-bar">0%</div>
