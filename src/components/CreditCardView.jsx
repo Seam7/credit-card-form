@@ -119,7 +119,6 @@ const CreditCardView = ({ state, focused }) => {
                     </motion.div>
                   )}
               </AnimatePresence>
-              {/* <span style={{ position: 'absolute', left: '30px' }}>/</span> */}
               <span>/</span>
               <AnimatePresence initial={false} exitBeforeEnter>
                 {state.expYear.length > 0 ? (

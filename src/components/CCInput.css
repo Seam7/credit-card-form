@@ -10,7 +10,8 @@
     border: 1px solid gray;
     border-radius: 4px;
     box-shadow: 0px 12px 10px -9px rgba(0,0,0,0);
-    transition: box-shadow 0.3s ease-in-out
+    transition: box-shadow 0.3s ease-in-out;
+    width:100%;
 }
 
 .cc-input__shadow {

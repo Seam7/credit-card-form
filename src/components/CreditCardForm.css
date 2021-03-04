@@ -2,7 +2,8 @@
     background-color: white;
     border-radius: 20px;
     box-shadow: 10px 20px 31px -1px rgba(0,0,0,0.75);
-    width: 60%;
+    width: 100%;
+    max-width: 600px;
     padding: calc(40px + 250px - 175px) 50px 20px; /* calc comes from 40px of top space, 250px from the card space and 175px the top from the positioning */
     position: absolute;
     top: 175px;
@@ -32,29 +33,6 @@
     justify-content: space-between;
 }
 
-/* .credit-card-form__number {
-    grid-area: 1 / 2 / 2 / 5;
-}
-
-.credit-card-form__holder {
-    grid-area: 2 / 2 / 3 / 5;
-}
-
-.credit-card-form__exp-month {
-    grid-area: 3 / 2 / 4 / 3;
-}
-
-.credit-card-form__exp-year {
-    grid-area: 3 / 3 / 4 / 4;
-}
-
-.credit-card-form__cvv {
-    grid-area: 3 / 4 / 4 / 5;
-}
-
-.credit-card-form__submit {
-    grid-area: 4 / 2 / 5 / 5;
-} */
 
 .credit-card-form-submit__progress-bar {
     height: 15px;
