@@ -1,38 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CCInput from './CCInput';
+import CCProgressBar from './CCProgressBar';
 import './CreditCardForm.css';
 
 const CreditCardForm = ({ formState, setFormState, setFocused }) => {
-  const setFieldState = (field, value) => {
+  const [percentageCompleted, setPercentageCompleted] = useState({
+    number: 0,
+    cvv: 0,
+    holder: 0,
+    expMonth: 0,
+    expYear: 0,
+  });
+
+  const changeField = (field, value) => {
     setFormState(() => ({ ...formState, [field]: value || '' }));
   };
+
+  const changePercetageCompleted = (field, fieldPercentageCompleted) => {
+    setPercentageCompleted({
+      ...percentageCompleted,
+      [field]: fieldPercentageCompleted,
+    });
+  };
+
+  const MAX_CHARACTERS = {
+    number: 16,
+    cvv: 3,
+    holder: 100,
+    expMonth: 2,
+    expYear: 2,
+  };
+
+  const formPercentage = Math.round(
+    Object.values(percentageCompleted).reduce(
+      (acc, percentage) => acc + percentage
+    ) / 5
+  );
 
   const handleFieldChange = (e) => {
     switch (e.target.name) {
       case 'cc-number': {
         const newValue = e.target.value.replace(/\D/g, '');
-        setFieldState('number', newValue);
+        changeField('number', newValue);
+        const fieldPercentageCompleted =
+          (newValue.length / MAX_CHARACTERS.number) * 100;
+        changePercetageCompleted('number', fieldPercentageCompleted);
         break;
       }
       case 'cc-cvv': {
         const newValue = e.target.value.replace(/\D/g, '');
-        setFieldState('cvv', newValue);
+        const fieldPercentageCompleted =
+          (newValue.length / MAX_CHARACTERS.cvv) * 100;
+        changePercetageCompleted('cvv', fieldPercentageCompleted);
+        changeField('cvv', newValue);
         break;
       }
       case 'cc-holder': {
-        setFieldState('holder', e.target.value);
-        break;
-      }
-      case 'cc-expiration': {
-        setFieldState('expiration', e.target.value);
+        changeField('holder', e.target.value);
+        const fieldPercentageCompleted = e.target.value === '' ? 0 : 100;
+        changePercetageCompleted('holder', fieldPercentageCompleted);
         break;
       }
       case 'cc-exp-month': {
-        setFieldState('expMonth', e.target.value);
+        changeField('expMonth', e.target.value);
+        const fieldPercentageCompleted =
+          (e.target.value.length / MAX_CHARACTERS.expMonth) * 100;
+        changePercetageCompleted('expMonth', fieldPercentageCompleted);
         break;
       }
       case 'cc-exp-year': {
-        setFieldState('expYear', e.target.value);
+        changeField('expYear', e.target.value);
+        const fieldPercentageCompleted =
+          (e.target.value.length / MAX_CHARACTERS.expYear) * 100;
+        changePercetageCompleted('expYear', fieldPercentageCompleted);
         break;
       }
       default:
@@ -88,13 +128,13 @@ const CreditCardForm = ({ formState, setFormState, setFocused }) => {
             label="CVV"
             value={formState.cvv}
             onChange={handleFieldChange}
-            options={{ maxLength: 4 }}
+            options={{ maxLength: 3 }}
             onFocus={setFocused}
           />
         </div>
       </div>
       <div className="credit-card-form__submit">
-        <div className="credit-card-form-submit__progress-bar">0%</div>
+        <CCProgressBar percentage={formPercentage} />
         <button className="credit-card-form-submit__button">Submit</button>
       </div>
     </div>

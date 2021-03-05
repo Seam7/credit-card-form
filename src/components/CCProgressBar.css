@@ -1,0 +1,19 @@
+.progress-bar {
+  height: 15px;
+  width: calc(100% - 1px);
+  color: black;
+  font-size: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.progress-bar__progress {
+  width: 100%;
+  /* background-color: aquamarine; */
+  border-radius: 10px;
+  transform-origin: 0 center;
+}

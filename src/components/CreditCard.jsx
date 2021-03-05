@@ -1,6 +1,7 @@
 import React from 'react';
 import CreditCardView from './CreditCardView';
 import CreditCardForm from './CreditCardForm';
+import './CreditCard.css';
 
 const CreditCard = () => {
   const [state, setState] = React.useState({
@@ -12,14 +13,7 @@ const CreditCard = () => {
   });
   const [focused, setFocused] = React.useState('');
   return (
-    <div
-      style={{
-        width: '80%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
+    <div className="credit-card">
       <CreditCardView state={state} focused={focused} />
       <CreditCardForm
         formState={state}
